@@ -8,7 +8,7 @@ def main():
     
     else:
         command = sys.argv[1]
-        if command == "help":
+        if command == "help" and len(sys.argv) == 2:
             print("Usage:")
             print("uv run main.py test-tokenizer-encode: Test the encoding functionality of the tokenizer.")        
             print("uv run main.py test-tokenizer-decode: Test the decoding functionality of the tokenizer.")
@@ -19,18 +19,24 @@ def main():
             print("uv run main.py inference: Run the translation inference loop.")
             print("uv run main.py app: Run the translation web application.")
             
-        elif command == "test-tokenizer-encode": test_encode()
-        elif command == "test-tokenizer-decode": test_decode()
-        elif command == "test-encoder": test_encoder()
-        elif command == "test-decoder": test_decoder()
-        elif command == "test-seq2seq": test_seq2seq()
+        elif command == "test-tokenizer-encode" and len(sys.argv) == 2: test_encode()
+        elif command == "test-tokenizer-decode" and len(sys.argv) == 2: test_decode()
+        elif command == "test-encoder" and len(sys.argv) == 2: test_encoder()
+        elif command == "test-decoder" and len(sys.argv) == 2: test_decoder()
+        elif command == "test-seq2seq" and len(sys.argv) == 2: test_seq2seq()
         elif command == "train":
             from train import train_loop
-            train_loop()
-        elif command == "inference":
+            
+            if len(sys.argv) == 3:
+                option = sys.argv[2]
+                if option == "-rb" or option == "--rebuild": train_loop(True)
+                else: print(f"Unknown option: {option}. The 'train' command has only '-rb'/'--rebuild' option.")
+            elif len(sys.argv) == 2: train_loop()
+            else: print(f"Unknown command: {command}. Use 'uv run main.py help'")    
+        elif command == "inference" and len(sys.argv) == 2:
             from inference import translation
             translation()
-        elif command == "app": print("Not implemented yet.")
+        elif command == "app" and len(sys.argv) == 2: print("Not implemented yet.")
         else: print(f"Unknown command: {command}. Use 'uv run main.py help'")
         
         

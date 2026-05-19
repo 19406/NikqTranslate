@@ -1,28 +1,312 @@
 [
-    {"en": "hello", "vi": "xin chào"},
-    {"en": "hi", "vi": "xin chào"},
-    {"en": "good morning", "vi": "chào buổi sáng"},
-    {"en": "good afternoon", "vi": "chào buổi chiều"},
-    {"en": "good evening", "vi": "chào buổi tối"},
-    {"en": "good night", "vi": "chúc ngủ ngon"},
-    {"en": "goodbye", "vi": "tạm biệt"},
-    {"en": "bye", "vi": "tạm biệt"},
-    {"en": "how are you", "vi": "bạn khoẻ không"},
-    {"en": "what is your name", "vi": "bạn tên gì"},
-    {"en": "what's your name", "vi": "bạn tên gì"},
-    {"en": "how old are you", "vi": "bạn bao nhiêu tuổi"},
-    {"en": "i am fine, thank you", "vi": "tôi khoẻ, cảm ơn bạn"},
-    {"en": "i'm fine, thank you", "vi": "tôi khoẻ, cảm ơn bạn"},
-    {"en": "where are you from", "vi": "bạn đến từ đâu"},
-    {"en": "where do you live", "vi": "bạn sống ở đâu"},
-    {"en": "how do you do", "vi": "rất vui được gặp bạn"},
-    {"en": "nice to meet you", "vi": "rất vui được gặp bạn"},
-    {"en": "pleased to meet you", "vi": "rất vui được gặp bạn"},
-    {"en": "great to meet you", "vi": "rất vui được gặp bạn"},
-    {"en": "i am sorry", "vi": "tôi xin lỗi"},
-    {"en": "i'm sorry", "vi": "tôi xin lỗi"},
-    {"en": "good luck", "vi": "chúc may mắn"},
-    {"en": "may i help you", "vi": "tôi có thể giúp gì cho bạn"},
-    {"en": "what are you doing", "vi": "bạn đang làm gì vậy"},
-    {"en": "i love chemistry", "vi": "tôi yêu hóa học"}
+    {
+        "en": "People who arrive more than 30 minutes before the opera begins should wait in the lobby until the doors to the main hall are opened.",
+        "fr": "Les personnes qui arrivent plus de 30 minutes avant le début de l'opéra doivent attendre dans le hall jusqu'à ce que les portes de la salle principale soient ouvertes.",
+        "vi": "Những người đến trước giờ bắt đầu buổi opera hơn 30 phút nên chờ tại sảnh cho đến khi cửa khán phòng chính mở."
+    },
+
+    {
+        "en": "First-class seats are equipped with a fully reclining seat, workstation, TV, and a global telephone for the convenience of Turkey Airline's passengers.",
+        "fr": "Les sièges de première classe sont équipés d'un siège entièrement inclinable, d'une station de travail, d'une télévision et d'un téléphone mondial pour la commodité des passagers de Turkish Airlines.",
+        "vi": "Ghế hạng nhất được trang bị ghế ngả hoàn toàn, bàn làm việc, TV và điện thoại quốc tế nhằm mang lại sự thuận tiện cho hành khách của Turkish Airline."
+    },
+
+    {
+        "en": "Attendees of the conference who wish to stay near the venue are advised to book their hotel early.",
+        "fr": "Les participants à la conférence qui souhaitent rester près du lieu sont invités à réserver leur hôtel tôt.",
+        "vi": "Những người tham dự hội nghị muốn ở gần địa điểm tổ chức nên đặt khách sạn sớm."
+    },
+
+    {
+        "en": "The computer systems that are affordable for a Fortune 500 company will not be affordable for a small company.",
+        "fr": "Les systèmes informatiques qui sont abordables pour une entreprise du Fortune 500 ne seront pas abordables pour une petite entreprise.",
+        "vi": "Những hệ thống máy tính mà một công ty thuộc Fortune 500 có thể mua được sẽ không phù hợp với khả năng tài chính của một công ty nhỏ."
+    },
+
+    {
+        "en": "Sky Tower or the AW building is going to house the new regional office of Jacob and Associates.",
+        "fr": "Les systèmes informatiques qui sont abordables pour une entreprise du Fortune 500 ne seront pas abordables pour une petite entreprise.",
+        "vi": "Sky Tower hay tòa nhà AW sẽ là nơi đặt văn phòng khu vực mới của Jacob and Associates."
+    },
+
+    {
+        "en": "Over one-third of the survey participants consider the city's garbage collection fees too high.",
+        "vi": "Hơn một phần ba số người tham gia khảo sát cho rằng phí thu gom rác của thành phố quá cao."
+    },
+
+    {
+        "en": "The supervisor reminds the staff that whatever is discussed at the meeting is confidential and should not be revealed to anyone who is not in the company.",
+        "vi": "Người giám sát nhắc nhở nhân viên rằng mọi nội dung được thảo luận trong cuộc họp đều mang tính bảo mật và không nên tiết lộ cho bất kỳ ai ngoài công ty."
+    },
+
+    {
+        "en": "Should your application be denied, you will receive a full refund of the application fee.",
+        "vi": "Nếu đơn đăng ký của bạn bị từ chối, bạn sẽ được hoàn lại toàn bộ phí đăng ký."
+    },
+
+    {
+        "en": "A snowstorm accompanied by freezing rain has been forecast in the Midwest on Sunday evening.",
+        "vi": "Một trận bão tuyết kèm theo mưa đá được dự báo sẽ xảy ra ở vùng Trung Tây vào tối Chủ nhật."
+    },
+
+    {
+        "en": "Knowing the possible coming retaliation in the trade war, the country decided to seize the initiatives and form stronger bonds with neighboring countries.",
+        "vi": "Nhận thấy khả năng xảy ra các biện pháp trả đũa tiếp theo trong cuộc chiến thương mại, quốc gia này đã quyết định chủ động hành động và củng cố quan hệ với các nước láng giềng."
+    },
+
+    {
+        "en": "The landlord insisted that the tenants stay until the end of the month to abide by the contract.",
+        "vi": "Chủ nhà yêu cầu những người thuê nhà ở lại đến hết tháng để tuân thủ hợp đồng."
+    },
+
+    {
+        "en": "Two years ago, the Department of Computer Science at the University of British Columbia began offering artificial intelligence courses.",
+        "vi": "Hai năm trước, Khoa Khoa học Máy tính của Đại học British Columbia bắt đầu mở các khóa học về trí tuệ nhân tạo."
+    },
+
+    {
+        "en": "There remains one more training session to be conducted before workers are allowed to operate the new machine.",
+        "vi": "Công nhân cần hoàn thành thêm một buổi đào tạo nữa trước khi được phép vận hành máy mới."
+    },
+
+    {
+        "en": "All employees are reminded to file leave requests at least three weeks in advance.",
+        "vi": "Tất cả nhân viên được nhắc nhở nộp đơn xin nghỉ phép trước ít nhất ba tuần."
+    },
+
+    {
+        "en": "The board of directors will be holding an important meeting regarding the merger agreement tomorrow to decide what needs to be revised before it is signed.",
+        "vi": "Hội đồng quản trị sẽ tổ chức một cuộc họp quan trọng vào ngày mai liên quan đến thỏa thuận sáp nhập để quyết định những nội dung cần được sửa đổi trước khi thỏa thuận được ký kết."
+    },
+
+    {
+        "en": "The lack of rainfall is posing challenges for local farmers who depend on river water and rainfall for irrigation.",
+        "vi": "Tình trạng thiếu lượng mưa đang gây ra nhiều khó khăn cho những nông dân địa phương phụ thuộc vào nước sông và lượng mưa để tưới tiêu."
+    },
+
+    {
+        "en": "The manager of the marketing department stipulates that all copywriting materials should be reviewed by him before being sent for publication.",
+        "vi": "Trưởng phòng marketing quy định rằng mọi nội dung quảng cáo phải được ông ấy xem xét trước khi được gửi đi xuất bản."
+    },
+
+    {
+        "en": "The employees who intend to undergo an interview for transfer have to apply today.",
+        "vi": "Những nhân viên có ý định tham gia phỏng vấn để chuyển công tác phải nộp đơn ngay hôm nay."
+    },
+
+    {
+        "en": "The prices of staple crops have decreased by over 41% since 2011. That is not because people are eating less, nor is it because farmers have become much more productive.",
+        "vi": "Giá các loại nông sản thiết yếu đã giảm hơn 41% kể từ năm 2011. Điều đó không phải vì người dân ăn ít hơn, cũng không phải vì nông dân đã trở nên năng suất hơn đáng kể."
+    },
+
+    {
+        "en": "It is imperative that managers write progress reports at the end of every week.",
+        "vi": "Các quản lý bắt buộc phải viết báo cáo tiến độ vào cuối mỗi tuần."
+    },
+
+    {
+        "en": "ATT Technologies Inc has decided to discontinue producing personal computers in order to concentrate on the mobile communications market.",
+        "vi": "ATT Technologies Inc đã quyết định ngừng sản xuất máy tính cá nhân để tập trung vào thị trường truyền thông di động."
+    },
+
+    {
+        "en": "Missing the important interview, the candidate has to find another opportunity to get a new job.",
+        "vi": "Do bỏ lỡ cuộc phỏng vấn quan trọng, ứng viên phải tìm cơ hội khác để có được một công việc mới."
+    },
+
+    {
+        "en": "This exclusive club will not grant memberships to anyone unless applicants are recommended by a current club member.",
+        "vi": "Câu lạc bộ độc quyền này sẽ không cấp tư cách thành viên cho bất kỳ ai trừ khi người đăng ký được một thành viên hiện tại của câu lạc bộ giới thiệu."
+    },
+
+    {
+        "en": "If Mr. Jones had accepted the accounting manager position from another company, Ms. Pike would have been the accounting manager already.",
+        "vi": "Nếu ông Jones nhận vị trí quản lý kế toán từ một công ty khác, thì bà Pike đã trở thành quản lý kế toán rồi."
+    },
+
+    {
+        "en": "The panel composed of five scholars is commissioned to review the proposal.",
+        "vi": "Hội đồng gồm năm học giả được giao nhiệm vụ xem xét đề xuất này."
+    },
+
+    {
+        "en": "Last week, the manager sent a memo requesting that all the workers send their tax documents to the accounting department by the end of this week, yet many of them missed the deadline.",
+        "vi": "Tuần trước, người quản lý đã gửi một bản ghi nhớ yêu cầu tất cả nhân viên nộp hồ sơ thuế cho phòng kế toán trước cuối tuần này, tuy nhiên nhiều người trong số họ đã bỏ lỡ thời hạn."
+    },
+
+    {
+        "en": "If you are not able to meet the project's deadline, request an extension from your manager three days ahead.",
+        "vi": "Nếu bạn không thể hoàn thành dự án đúng thời hạn, hãy xin gia hạn từ quản lý của bạn trước ba ngày."
+    },
+
+    {
+        "en": "If I were John, I wouldn't accept the job offer.",
+        "vi": "Nếu tôi là John, tôi sẽ không chấp nhận lời mời làm việc đó."
+    },
+
+    {
+        "en": "The implementation of the workplace smoking ban is crucial in preventing non-smoking workers from breathing in secondhand smoke.",
+        "vi": "Việc thực hiện lệnh cấm hút thuốc tại nơi làm việc đóng vai trò quan trọng trong việc ngăn những nhân viên không hút thuốc hít phải khói thuốc thụ động."
+    },
+
+    {
+        "en": "The accountant affirmed that the travel expenses claimed by the sales team were invalid and would not be reimbursed.",
+        "vi": "Kế toán xác nhận rằng các khoản chi phí đi lại do đội ngũ bán hàng yêu cầu thanh toán là không hợp lệ và sẽ không được hoàn trả."
+    },
+
+    {
+        "en": "Former Sendai Company CEO Ken Nakata spoke about his career experiences.",
+        "vi": "Cựu giám đốc điều hành của Sendai Company, ông Ken Nakata, đã chia sẻ về những kinh nghiệm trong sự nghiệp của mình."
+    },
+
+    {
+        "en": "Passengers who will be taking a connecting domestic flight should go to Terminal A.",
+        "vi": "Những hành khách sẽ tiếp tục chuyến bay nội địa nối chuyến nên đến Nhà ga A."
+    },
+
+    {
+        "en": "Fresh and tasty apple-cider donuts are available at Oakcrest Orchard's retail shop for £5 per dozen.",
+        "vi": "Những chiếc bánh donut vị táo tươi ngon hiện được bán tại cửa hàng bán lẻ của Oakcrest Orchard với giá 5 bảng Anh mỗi tá."
+    },
+
+    {
+        "en": "Zahn Flooring has the widest selection of tiles in the United Kingdom.",
+        "vi": "Zahn Flooring cung cấp nhiều loại gạch lát nhất tại Vương quốc Anh."
+    },
+
+    {
+        "en": "One responsibility of the IT department is to ensure that the company is using updated software.",
+        "vi": "Một trong những trách nhiệm của bộ phận CNTT là đảm bảo rằng công ty đang sử dụng phần mềm được cập nhật."
+    },
+
+    {
+        "en": "It is wise to check a company's dress code before visiting its head office.",
+        "vi": "Bạn nên kiểm tra quy định trang phục của công ty trước khi đến trụ sở chính của họ."
+    },
+
+    {
+        "en": "Wexler Store's management team expects that employees will enthusiastically support any new hires.",
+        "vi": "Ban quản lý của Wexler Store kỳ vọng rằng nhân viên sẽ nhiệt tình hỗ trợ bất kỳ nhân viên mới nào."
+    },
+
+    {
+        "en": "Wheel alignments and brake system inspections are part of our vehicle service plan.",
+        "vi": "Căn chỉnh bánh xe và kiểm tra hệ thống phanh là một phần trong gói dịch vụ xe của chúng tôi."
+    },
+
+    {
+        "en": "Registration for the Marketing Coalition Conference is now open until September 30.",
+        "vi": "Đăng ký tham dự Hội nghị Marketing Coalition hiện đang mở đến ngày 30 tháng 9."
+    },
+
+    {
+        "en": "Growth in the home entertainment industry has been limited this quarter.",
+        "vi": "Tăng trưởng trong ngành công nghiệp giải trí gia đình đã bị hạn chế trong quý này."
+    },
+
+    {
+        "en": "Hawson Furniture will be making deliveries on the east side of town on Thursday.",
+        "vi": "Hawson Furniture sẽ giao hàng ở phía đông thị trấn vào thứ Năm."
+    },
+
+    {
+        "en": "The Marlton City Council does not have the authority to prohibit parking on city streets.",
+        "vi": "Hội đồng Thành phố Marlton không có thẩm quyền cấm đỗ xe trên các tuyến đường trong thành phố."
+    },
+
+    {
+        "en": "Project Earth Group is looking for ways to reduce transport-related greenhouse gas emissions.",
+        "vi": "Project Earth Group đang tìm cách giảm lượng khí thải nhà kính liên quan đến giao thông vận tải."
+    },
+
+    {
+        "en": "Our skilled tailors are happy to design a custom-made suit that fits your style and budget perfectly.",
+        "vi": "Những thợ may lành nghề của chúng tôi sẵn lòng thiết kế một bộ vest may đo phù hợp hoàn hảo với phong cách và ngân sách của bạn."
+    },
+
+    {
+        "en": "Project manager Hannah Chung has proved to be very helpful with completing company projects.",
+        "vi": "Quản lý dự án Hannah Chung đã chứng tỏ là người rất hữu ích trong việc hoàn thành các dự án của công ty."
+    },
+
+    {
+        "en": "Lehua Vacation Club members will receive double points during the month of August at participating hotels.",
+        "vi": "Các thành viên của Lehua Vacation Club sẽ nhận được gấp đôi số điểm trong tháng Tám tại các khách sạn tham gia chương trình."
+    },
+
+    {
+        "en": "The costumes were not received soon enough to be used in the first dress rehearsal.",
+        "vi": "Các bộ trang phục đến không kịp để được sử dụng trong buổi tổng duyệt đầu tiên."
+    },
+
+    {
+        "en": "As a former publicist for several renowned orchestras, Mr. Wu would excel in the role of event organizer.",
+        "vi": "Với kinh nghiệm từng là người phụ trách truyền thông cho nhiều dàn nhạc nổi tiếng, ông Wu sẽ rất xuất sắc trong vai trò tổ chức sự kiện."
+    },
+
+    {
+        "en": "The northbound lane on Davis Street will be temporarily closed because of the city's bridge reinforcement project.",
+        "vi": "Làn đường hướng bắc trên phố Davis sẽ tạm thời bị đóng do dự án gia cố cầu của thành phố."
+    },
+
+    {
+        "en": "Airline representatives must handle a wide range of passenger issues, from missed connections to lost luggage.",
+        "vi": "Đại diện hãng hàng không phải xử lý nhiều vấn đề khác nhau của hành khách, từ lỡ chuyến bay nối chuyến đến thất lạc hành lý."
+    },
+
+    {
+        "en": "The meeting notes were accidentally deleted, but Mr. Hahm was able to recreate them from memory.",
+        "vi": "Biên bản cuộc họp đã vô tình bị xóa, nhưng ông Hahm đã có thể khôi phục lại chúng từ trí nhớ của mình."
+    },
+
+    {
+        "en": "The current issue of *Farming Scene* magazine predicts that the price of corn will rise 5 percent over the next year.",
+        "vi": "Số hiện tại của tạp chí *Farming Scene* dự đoán rằng giá ngô sẽ tăng 5 phần trăm trong năm tới."
+    },
+
+    {
+        "en": "Anyone who still needs to take the fire safety training should do so before the end of the month.",
+        "vi": "Bất kỳ ai vẫn cần tham gia khóa đào tạo an toàn phòng cháy chữa cháy nên hoàn thành việc đó trước cuối tháng."
+    },
+
+    {
+        "en": "Emerging technologies have already begun to transform the shipping industry in ways that were once unimaginable.",
+        "vi": "Các công nghệ mới nổi đã bắt đầu chuyển đổi ngành vận tải theo những cách mà trước đây con người khó có thể tưởng tượng."
+    },
+
+    {
+        "en": "The company handbook outlines the high standards that employees are expected to meet every day.",
+        "vi": "Sổ tay công ty trình bày các tiêu chuẩn cao mà nhân viên cần đáp ứng hằng ngày."
+    },
+
+    {
+        "en": "Because some of the board members have scheduling conflicts, the board meeting will be moved to a date when all can attend.",
+        "vi": "Vì một số thành viên hội đồng có lịch trình bị trùng, cuộc họp hội đồng sẽ được dời sang một ngày mà tất cả mọi người đều có thể tham dự."
+    },
+
+    {
+        "en": "The project required the collaboration of several teams across the company.",
+        "vi": "Dự án này đòi hỏi sự hợp tác của nhiều nhóm khác nhau trong công ty."
+    },
+
+    {
+        "en": "We cannot send the store's coupon booklet to the printers until it has been approved by Ms. Jeon.",
+        "vi": "Chúng tôi không thể gửi tập phiếu giảm giá của cửa hàng đến nhà in cho đến khi nó được bà Jeon phê duyệt."
+    },
+
+    {
+        "en": "In light of the closure of Verdigold Transport Services, we are looking for a new shipping company.",
+        "vi": "Trước việc Verdigold Transport Services ngừng hoạt động, chúng tôi đang tìm một công ty vận chuyển mới."
+    },
+
+    {
+        "en": "The supplemental information provided by Uniss Bank's brochure helps applicants understand the terms of their loans.",
+        "vi": "Thông tin bổ sung được cung cấp trong tờ giới thiệu của Uniss Bank giúp người đăng ký hiểu các điều khoản khoản vay của họ."
+    },
+
+    {
+        "en": "Come to the Maxley Heights Center for Horticulture and learn how to create a beautiful, eco-friendly garden for your home or business. Next Saturday at 4 P.M., we are hosting a free workshop for the public. We will teach you how to plant a rain garden, which is simply a shallow sunken garden that uses a special soil mix to filter pollutants from rainwater flowing from nearby roads and rooftops. These gardens can be landscaped with native plants and flowers. As a matter of fact, rain gardens are always beneficial to the local environment. Among other things, they improve drainage and protect rivers and streams. To register, visit www.maxley-horticulture.org.",
+        "vi": "Hãy đến Trung tâm Làm vườn Maxley Heights và tìm hiểu cách tạo ra một khu vườn đẹp mắt, thân thiện với môi trường cho ngôi nhà hoặc doanh nghiệp của bạn. Vào thứ Bảy tuần tới lúc 4 giờ chiều, chúng tôi sẽ tổ chức một buổi hội thảo miễn phí dành cho công chúng. Chúng tôi sẽ hướng dẫn bạn cách xây dựng một khu vườn mưa, tức là một khu vườn trũng nông sử dụng hỗn hợp đất đặc biệt để lọc các chất ô nhiễm từ nước mưa chảy xuống từ những con đường và mái nhà gần đó. Những khu vườn này có thể được trang trí bằng các loài cây và hoa bản địa. Thực tế, vườn mưa luôn mang lại lợi ích cho môi trường địa phương. Ngoài những lợi ích khác, chúng còn cải thiện khả năng thoát nước và bảo vệ sông suối. Để đăng ký, hãy truy cập www.maxley-horticulture.org."
+    }
 ]
+

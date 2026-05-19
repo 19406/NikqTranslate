@@ -1,62 +1,77 @@
 import torch
 import torch.nn as nn
 import torch.optim as optim
-
-from src import create_token_ids, build_seq2seq
+from torch.utils.data import DataLoader
+from src import TranslationDataset, collate_func, create_token_ids, build_seq2seq
 
 torch.manual_seed(42)
 
+TOKENIZER_TYPE = "BPE"
 EMBEDDING_DIM = 32
 HIDDEN_DIM = 64
-EPOCHS = 10000
+LEARNING_RATE = 0.001
+EPOCHS = 100
 
-print("Building Seq2Seq model...")
-model, en_tokenizer, vi_tokenizer = build_seq2seq("data/corpus.json", EMBEDDING_DIM, HIDDEN_DIM)
-print("Model initialized!")
+def initialize_model(rebuild_vocab=False):
+    print("Building Seq2Seq model...")
+    model, en_tokenizer, vi_tokenizer = build_seq2seq("data/corpus.json", TOKENIZER_TYPE, rebuild_vocab, EMBEDDING_DIM, HIDDEN_DIM)
+    if rebuild_vocab:
+        en_tokenizer.save_vocab("vocabs/en_vocab.json")
+        vi_tokenizer.save_vocab("vocabs/vi_vocab.json")
 
-print(f"English vocab size: {len(en_tokenizer.vocab)}")
-print(f"Vietnamese vocab size: {len(vi_tokenizer.vocab)}")
+    print("Model initialized!")
 
-print("\nEncoding source sentences...")
-src = create_token_ids("data/corpus.json", lang="en")
+    print(f"English vocab size: {len(en_tokenizer.vocab)}")
+    print(f"Vietnamese vocab size: {len(vi_tokenizer.vocab)}")
 
-print("Encoding target sentences...")
-tgt = create_token_ids("data/corpus.json", lang="vi")
+    print("\nEncoding source sentences...")
+    src_sequences = create_token_ids("data/corpus.json", TOKENIZER_TYPE, lang="en")
 
-print("\nTensor shapes:")
-print(f"src shape: {src.shape}")
-print(f"tgt shape: {tgt.shape}")
+    print("Encoding target sentences...")
+    tgt_sequences = create_token_ids("data/corpus.json", TOKENIZER_TYPE, lang="vi")
 
-# Loss function
-criterion = nn.CrossEntropyLoss(ignore_index=0)
+    dataset = TranslationDataset(src_sequences, tgt_sequences)
+    loader = DataLoader(
+            dataset,
+            batch_size=8,
+            shuffle=True,
+            collate_fn=collate_func
+        )
 
-# Optimizer
-optimizer = optim.Adam(model.parameters(), lr=0.001)
+    # Loss function
+    criterion = nn.CrossEntropyLoss(ignore_index=0)
 
-def train_loop():
+    # Optimizer
+    optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
+    
+    return model, loader, criterion, optimizer
+    
+
+def train_loop(rebuild_vocab=False):
+    model, loader, criterion, optimizer = initialize_model(rebuild_vocab)
+    
     print("\nTraining started...\n")
     for epoch in range(EPOCHS):
-        optimizer.zero_grad()
-        output = model(src, tgt)
-        vocab_size = output.shape[-1]
+        model.train()
+        epoch_loss = 0
+        for batch_idx, (src, tgt) in enumerate(loader):            
+            optimizer.zero_grad()
+            output = model(src, tgt)
+            vocab_size = output.shape[-1]
 
-        if epoch == 0:
-            print("Forward pass successful!")
-            print(f"Raw output shape: {output.shape}")
-            print(f"Vocabulary size: {vocab_size}")
+            output = output.reshape(-1, vocab_size)
+            target = tgt[:, 1:].reshape(-1)
 
-        output = output.reshape(-1, vocab_size)
-        target = tgt[:, 1:].reshape(-1)
+            loss = criterion(output, target)
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+            optimizer.step()
+            
+            epoch_loss += loss.item()
+            print(f"Epoch [{epoch + 1}/{EPOCHS}] | Batch [{batch_idx + 1}/{len(loader)}] | Loss: {loss.item():.4f}")
 
-        if epoch == 0:
-            print(f"Reshaped output shape: {output.shape}")
-            print(f"Target shape: {target.shape}")
-
-        loss = criterion(output, target)
-        loss.backward()
-        optimizer.step()
-
-        print(f"Epoch [{epoch + 1}/{EPOCHS}] | Loss: {loss.item():.4f}")
+        avg_loss = epoch_loss / len(loader)
+        print(f"Epoch [{epoch + 1}/{EPOCHS}] - Average Loss: {avg_loss:.4f}")
 
     torch.save(model.state_dict(), "models/seq2seq.pt")
 
