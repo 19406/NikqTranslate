@@ -5,7 +5,7 @@ TOKENIZER_TYPE = "BPE"
 EMBEDDING_DIM = 32
 HIDDEN_DIM = 64
 
-model, en_tokenizer, vi_tokenizer = build_seq2seq("data/corpus.json", TOKENIZER_TYPE, EMBEDDING_DIM, HIDDEN_DIM)
+model, en_tokenizer, vi_tokenizer = build_seq2seq("data/corpus.json", TOKENIZER_TYPE, False, EMBEDDING_DIM, HIDDEN_DIM)
 model.load_state_dict(torch.load("models/seq2seq.pt"))
 
 def translation():

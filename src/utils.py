@@ -61,7 +61,7 @@ def build_vocab(data_path, ttype="BPE", rebuild_vocab=False, lang="en"):
     elif ttype == "BPE": tokenizer = BPETokenizer()
     
     if rebuild_vocab: tokenizer.build_vocab(sentences)
-    else: tokenizer.load_vocab(f"vocabs/{lang}_vocab.json")
+    else: tokenizer.load_vocab(f"vocabs/{ttype}_{lang}_vocab.json")
     
     return tokenizer
 

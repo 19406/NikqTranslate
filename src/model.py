@@ -21,22 +21,48 @@ class Seq2Seq(nn.Module):
 
         return outputs
     
-    def translate(self, src, vi_tokenizer, max_length=20):
+    def translate(self, src, vi_tokenizer, max_length=50):
         self.eval()
         
         with torch.no_grad():
+            if src.dim() == 1: src = src.unsqueeze(0)
+            
+            batch_size = src.size(0)
+            
             encoder_outputs, hidden, cell = self.encoder(src)
-            input_token = torch.tensor([[1]])
+            input_token = torch.full(
+                (batch_size, 1),
+                vi_tokenizer.stoi["<sos>"],
+                dtype=torch.long,
+                device=src.device
+            )
 
-            generated_tokens = []
+            generated_tokens = [[] for _ in range(batch_size)]
+            finished = [False for _ in range(batch_size)]
+            
             for _ in range(max_length):
                 prediction, hidden, cell = self.decoder(input_token, hidden, cell, encoder_outputs)
-                predicted_token = prediction.argmax(dim=-1)
+                predicted_token = torch.argmax(prediction, dim=-1)
 
-                token_id = predicted_token.item()
-                if token_id == vi_tokenizer.stoi["<eos>"]: break
-
-                generated_tokens.append(token_id)
                 input_token = predicted_token
+                
+                for i in range(batch_size):
+                    if finished[i]: continue
+                    
+                    token_id = predicted_token[i].item()
+                    if token_id == vi_tokenizer.stoi["<eos>"]:
+                        finished[i] = True
+                        continue
 
-            return vi_tokenizer.decode(generated_tokens)
+                    generated_tokens[i].append(token_id)
+                
+                if all(finished): break
+                
+            decoded_sentences = []
+            
+            for tokens in generated_tokens:
+                sentence = vi_tokenizer.decode(tokens)
+                decoded_sentences.append(sentence)
+                
+            if batch_size == 1: return decoded_sentences[0]
+            return decoded_sentences
