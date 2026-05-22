@@ -1,4 +1,4 @@
-from .tokenizer import SimpleTokenizer, BPETokenizer
+from .tokenizer import SimpleTokenizer, BPETokenizer, SentencePieceTokenizer
 from .encoder import Encoder
 from .decoder import Decoder
 from .attention import Attention
@@ -8,8 +8,7 @@ from .utils import pad_sequences, parse_sentences, collate_func, create_token_id
 from .metrics import evaluate_model
 
 __all__ = [
-    "SimpleTokenizer",
-    "BPETokenizer",
+    "SimpleTokenizer", "BPETokenizer", "SentencePieceTokenizer",
     "Encoder",
     "Decoder",
     "Attention",

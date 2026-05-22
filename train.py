@@ -9,18 +9,18 @@ import matplotlib.pyplot as plt
 
 torch.manual_seed(42)
 
-TOKENIZER_TYPE = "BPE"
+CORPUS_TYPE = "align"
+TOKENIZER_TYPE = "SP"
 EMBEDDING_DIM = 32
 HIDDEN_DIM = 64
 LEARNING_RATE = 0.001
-EPOCHS = 1000
-
+EPOCHS = 200
 def initialize_model(rebuild_vocab=False):
     print("Building Seq2Seq model...")
-    model, en_tokenizer, vi_tokenizer = build_seq2seq("data/corpus.json", TOKENIZER_TYPE, rebuild_vocab, EMBEDDING_DIM, HIDDEN_DIM)
+    model, en_tokenizer, vi_tokenizer = build_seq2seq(f"data/{CORPUS_TYPE}_corpus.json", CORPUS_TYPE, TOKENIZER_TYPE, rebuild_vocab, EMBEDDING_DIM, HIDDEN_DIM)
     if rebuild_vocab:
-        en_tokenizer.save_vocab(f"vocabs/{TOKENIZER_TYPE}_en_vocab.json")
-        vi_tokenizer.save_vocab(f"vocabs/{TOKENIZER_TYPE}_vi_vocab.json")
+        en_tokenizer.save_vocab(f"vocabs/{CORPUS_TYPE}_{TOKENIZER_TYPE}_en.json")
+        vi_tokenizer.save_vocab(f"vocabs/{CORPUS_TYPE}_{TOKENIZER_TYPE}_vi.json")
 
     print("Model initialized!")
 
@@ -28,10 +28,10 @@ def initialize_model(rebuild_vocab=False):
     print(f"Vietnamese vocab size: {len(vi_tokenizer.vocab)}")
 
     print("\nEncoding source sentences...")
-    src_sequences = create_token_ids("data/corpus.json", TOKENIZER_TYPE, lang="en")
+    src_sequences = create_token_ids(f"data/{CORPUS_TYPE}_corpus.json", CORPUS_TYPE, TOKENIZER_TYPE, lang="en")
 
     print("Encoding target sentences...")
-    tgt_sequences = create_token_ids("data/corpus.json", TOKENIZER_TYPE, lang="vi")
+    tgt_sequences = create_token_ids(f"data/{CORPUS_TYPE}_corpus.json", CORPUS_TYPE, TOKENIZER_TYPE, lang="vi")
 
     dataset = TranslationDataset(src_sequences, tgt_sequences)
     train_size = int(0.8 * len(dataset))
@@ -107,7 +107,7 @@ def train_loop(rebuild_vocab=False):
         "val_loss": val_loss_history,
         "val_bleu": val_bleu_history
     }    
-    with open(f"logs/{TOKENIZER_TYPE}_metrics_history.json", "w") as f:
+    with open(f"logs/{CORPUS_TYPE}_{TOKENIZER_TYPE}_metrics_history.json", "w") as f:
         json.dump(metrics, f, indent=4)
         
     fig, axes = plt.subplots(2, 1, sharex=True, figsize=(10, 10))
@@ -127,9 +127,9 @@ def train_loop(rebuild_vocab=False):
     axes[1].grid(True)
     
     plt.tight_layout()
-    plt.savefig(f"plots/{TOKENIZER_TYPE}_metrics_curve.png")
+    plt.savefig(f"plots/{CORPUS_TYPE}_{TOKENIZER_TYPE}_metrics_curve.png")
     plt.show()
 
-    torch.save(model.state_dict(), "models/seq2seq.pt")
+    torch.save(model.state_dict(), f"models/{CORPUS_TYPE}_{TOKENIZER_TYPE}_seq2seq.pt")
 
     print("\nTraining complete!")

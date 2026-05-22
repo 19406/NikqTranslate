@@ -11,7 +11,7 @@ class SimpleTokenizer(TokenizerBase):
     def __init__(self):
         super().__init__()
 
-    def build_vocab(self, sentences):
+    def build_vocab(self, sentences, ctype, ttype, lang="en"):
         words = []
         
         for sentence in sentences:
@@ -114,7 +114,7 @@ class BPETokenizer(TokenizerBase):
         self.stoi = {s: i for i, s in enumerate(self.vocab)}
         self.itos = {i: s for s, i in self.stoi.items()}
         
-    def build_vocab(self, sentences, num_merges=500):
+    def build_vocab(self, sentences, ctype="initial", ttype="BPE", lang="en", num_merges=500):
         self.initial_vocab(sentences)
         
         for i in range(num_merges):
@@ -171,3 +171,75 @@ class BPETokenizer(TokenizerBase):
             words.append(token)
 
         return " ".join(words)
+    
+# ================================================== SENTENCEPIECE TOKENIZER ==================================================
+# =============================================================================================================================
+
+"""
+Encode: Raw text -> sentence pieces
+Decode: Sentence pieces -> ids -> text
+"""
+
+import os
+import tempfile
+import sentencepiece as spm
+
+from .tokenizer_base import TokenizerBase
+
+class SentencePieceTokenizer(TokenizerBase):
+    def __init__(self):
+        super().__init__()
+        self.sp = spm.SentencePieceProcessor()
+        self.model_path = None
+
+    def sos_id(self): return self.sp.bos_id()
+    def eos_id(self): return self.sp.eos_id()
+
+    def build_vocab(self, sentences, ctype="initial", ttype="BPE", lang="en", vocab_size=500):
+        # Create temporary corpus file
+        with tempfile.NamedTemporaryFile(mode="w", delete=False, encoding="utf-8") as f:
+            for sentence in sentences:
+                f.write(sentence + "\n")
+                
+            corpus_path = f.name
+
+        model_prefix = (f"vocabs/{ctype}_{ttype}_{lang}")
+
+        try:
+            spm.SentencePieceTrainer.train(
+                input=corpus_path,
+                model_prefix=model_prefix,
+                vocab_size=vocab_size,
+                model_type="bpe",
+                normalization_rule_name="identity",
+                pad_id=0,
+                bos_id=1,
+                eos_id=2,
+                unk_id=3
+            )
+
+            self.model_path = (f"{model_prefix}.model")
+            self.sp.load(self.model_path)
+            self.vocab = [self.sp.id_to_piece(i) for i in range(self.sp.get_piece_size())]
+
+        finally: os.remove(corpus_path)
+
+    def encode(self, text):
+        return self.sp.encode(text, out_type=int)
+
+    def decode(self, ids):
+        return self.sp.decode(ids)
+    
+    def id_to_piece(self, idx):
+        return self.sp.id_to_piece(idx)
+    
+    def piece_to_id(self, piece):
+        return self.sp.piece_to_id(piece)
+
+    def save_vocab(self, path): pass
+
+
+    def load_vocab(self, path):
+        model_path = path.replace(".json", ".model")
+        self.sp.load(model_path)
+        self.vocab = [self.sp.id_to_piece(i) for i in range(self.sp.get_piece_size())]

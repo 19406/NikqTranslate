@@ -32,7 +32,7 @@ class Seq2Seq(nn.Module):
             encoder_outputs, hidden, cell = self.encoder(src)
             input_token = torch.full(
                 (batch_size, 1),
-                vi_tokenizer.stoi["<sos>"],
+                vi_tokenizer.sos_id(),
                 dtype=torch.long,
                 device=src.device
             )
@@ -50,7 +50,7 @@ class Seq2Seq(nn.Module):
                     if finished[i]: continue
                     
                     token_id = predicted_token[i].item()
-                    if token_id == vi_tokenizer.stoi["<eos>"]:
+                    if token_id == vi_tokenizer.eos_id():
                         finished[i] = True
                         continue
 

@@ -1,4 +1,4 @@
-from .tokenizer import SimpleTokenizer, BPETokenizer
+from .tokenizer import SimpleTokenizer, BPETokenizer, SentencePieceTokenizer
 from .encoder import Encoder
 from .decoder import Decoder
 from .attention import Attention
@@ -47,21 +47,22 @@ def collate_func(batch):
 
     return (i2T(padded_src), i2T(padded_tgt))
 
-def create_token_ids(data_path, ttype="BPE", lang="en"):
+def create_token_ids(data_path, ctype="initial", ttype="BPE", lang="en"):
     sentences = parse_sentences(data_path, lang)
-    tokenizer = build_vocab(data_path, ttype, False, lang)
+    tokenizer = build_vocab(data_path, ctype, ttype, False, lang)
     
     encoded = [tokenizer.encode(s) for s in sentences]
     return encoded
 
-def build_vocab(data_path, ttype="BPE", rebuild_vocab=False, lang="en"):
+def build_vocab(data_path, ctype="initial", ttype="BPE", rebuild_vocab=False, lang="en"):
     sentences = parse_sentences(data_path, lang)
     
     if ttype == "simple": tokenizer = SimpleTokenizer()
     elif ttype == "BPE": tokenizer = BPETokenizer()
+    elif ttype == "SP": tokenizer = SentencePieceTokenizer()
     
-    if rebuild_vocab: tokenizer.build_vocab(sentences)
-    else: tokenizer.load_vocab(f"vocabs/{ttype}_{lang}_vocab.json")
+    if rebuild_vocab: tokenizer.build_vocab(sentences, ctype, ttype, lang)
+    else: tokenizer.load_vocab(f"vocabs/{ctype}_{ttype}_{lang}.json")
     
     return tokenizer
 
@@ -71,9 +72,9 @@ def i2T(int_list):
 def T2i(tensor):
     return tensor.tolist()
 
-def build_seq2seq(data_path, ttype="BPE", rebuild_vocab=False, embedding_dim=32, hidden_dim=64):
-    en_tokenizer = build_vocab(data_path, ttype, rebuild_vocab, lang="en")
-    vi_tokenizer = build_vocab(data_path, ttype, rebuild_vocab, lang="vi")
+def build_seq2seq(data_path, ctype="initial", ttype="BPE", rebuild_vocab=False, embedding_dim=32, hidden_dim=64):
+    en_tokenizer = build_vocab(data_path, ctype, ttype, rebuild_vocab, lang="en")
+    vi_tokenizer = build_vocab(data_path, ctype, ttype, rebuild_vocab, lang="vi")
     en_vocab_size = len(en_tokenizer.vocab)
     vi_vocab_size = len(vi_tokenizer.vocab)
 

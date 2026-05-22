@@ -26,6 +26,12 @@ class TokenizerBase(ABC):
         self.itos = {}
         self.special_tokens = ["<pad>", "<sos>", "<eos>", "<unk>"]
 
+    def sos_id(self):
+        return self.stoi["<sos>"]
+    
+    def eos_id(self):
+        return self.stoi["<eos>"]
+
     def tokenize(self, text):
         text = unicodedata.normalize("NFKC", text)
         text = text.lower().strip()
